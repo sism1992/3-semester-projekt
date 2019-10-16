@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Redigér Bestilling</title>
+    <link rel="stylesheet" type="text/css" th:src="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/></head>
+<body>
+<div th:include="fragment/style :: nav-navbar"></div>
+<div class="container">
+    <h1>Redigér Bestilling</h1>
+    <form th:action="@{/order/edit/save/(id=${orderModel.id})}" th:method="put">
+        <hr>
+        <div class="form-group">
+            <label for="menu-name"></label>
+            <input type="hidden" class="form-control" id="menu-name" value="" th:field="${orderModel.menu.name}">
+        </div>
+        <div class="form-group">
+            <label for="price-total">Pris</label>
+            <input type="hidden" class="form-control" id="price-total" value="" th:field="${orderModel.priceTotal}">
+        </div>
+        <div class="form-group">
+            <label for="customer-email">Kunde e-mail</label>
+            <input type="text" class="form-control" id="customer-email" value="" th:field="${orderModel.customerEmail}">
+        </div>
+        <div class="form-group" >
+            <label for="customer-address" >Kunde adresse</label>
+            <input type="text" class="form-control" id="customer-address" value=""
+                   th:field="${orderModel.customerAddress}">
+        </div>
+        <div class="form-group" >
+            <label for="order-date" >Order date</label>
+            <input type="text" class="form-control" id="order-date" value="" th:field="${orderModel.orderDate}">
+        </div>
+        <div class="form-group" >
+            <label for="delivery-date" >Delivery date</label>
+            <input type="text" class="form-control" id="delivery-date" value="" th:field="${orderModel.deliveryDate}">
+        </div>
+        <div class="form-group" >
+            <label for="customer-comment" >Kunde kommentar</label>
+            <input type="text" class="form-control" id="customer-comment" value=""
+                   th:field="${orderModel.customerComment}">
+        </div>
+        <div class="form-group">
+            <label for="guest-count" >Antal kuverter</label>
+            <input type="text" class="form-control" id="guest-count" value="" th:field="${orderModel.guestCount}">
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-success mb-2">Gem</button>
+    </form>
+</div>
+<script src="/webjars/jquery/3.2.1/jquery.js"></script>
+<script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+<script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FragmentStyle</title>
+</head>
+<body>
+<nav th:fragment="nav-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-dark"
+         style="background-color: #B3000C; position: fixed; width: 100%; z-index: 100">
+        <a class="navbar-brand" href="/">
+            Mormor's Køkken
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/food-item">Mad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/menu">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order">Bestillinger</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+                        <a class="dropdown-item" href="#">Admin 1</a>
+                        <a class="dropdown-item" href="#">Admin 2</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/menu/user-ui">User UI</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="height: 75px"></div>
+</nav>
+<script src="/webjars/jquery/3.2.1/jquery.js"></script>
+<script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+<script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

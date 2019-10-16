@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Menu</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <div th:include="fragment/style :: nav-navbar"></div>
+    <div class="container">
+        <h1>Opret Menu</h1>
+        <hr>
+        <form th:action="@{/menu/save}" method="post">
+            <div class="form-group">
+                <label for="menu-name" class="col-form-label">Navn</label>
+                <input type="text" class="form-control" id="menu-name" name="menu-name" value=""
+                       th:field="${menuModel.name}"/>
+            </div>
+            <div class="form-group">
+                <label for="menu-price" class="col-form-label">Pris pr. Kuvert</label>
+                <input type="text" class="form-control" id="menu-price" name="menu-price" value=""
+                       th:field="${menuModel.price}"/>
+            </div>
+            <div class="form-group" >
+                <label for="menu-description" class="col-form-label">Beskrivelse</label>
+                <textarea class="form-control" rows="5" id="menu-description" name="menu-description" value=""
+                          th:field="${menuModel.description}"></textarea>
+            </div>
+            <div class="form-group">
+                <div th:each="foodItem : ${foodItems}">
+                    <input type="checkbox" th:id="${{foodItem.id}}" th:value="${foodItem.id}"
+                           th:field="*{menuModel.foodItems}"/>
+                    <label th:for="${foodItem}" th:text="${foodItem.name}"></label>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-success mb-2">Opret</button>
+        </form>
+    </div>
+    <script src="/webjars/jquery/3.2.1/jquery.js"></script>
+    <script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+    <script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

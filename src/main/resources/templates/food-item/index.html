@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Madvarer</title>
+    <link rel="stylesheet" type="text/css" th:src="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/></head>
+<body>
+    <div th:include="fragment/style :: nav-navbar"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h2>Madvarer</h2>
+            </div>
+            <div>
+                <div class="col-sm">
+                    <a href="food-item/create">
+                    <button href="food-item/create" class = "btn btn-success m-1">Opret Madvare</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <div class = "table-responsive">
+        <table class = "table table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Navn</th>
+                <th>Pris</th>
+                <th>Beskrivelse</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Display all food-items from the DB -->
+            <tr th:each="foodItem : ${foodItems}">
+                <td th:text="${foodItem.id}"></td>
+                <td th:text="${foodItem.name}"></td>
+                <td th:text="${foodItem.price} + ' DKK'"></td>
+                <td th:text="${foodItem.description}"></td>
+                <td><a id="edit" th:href="@{../food-item/edit/(id=${foodItem.id})}" title="Rediger">
+                    <button class="btn btn-primary">Redigér</button></a></td>
+                <td><a id="delete"  th:href="@{../food-item/delete/(id=${foodItem.id})}"title="Slet">
+                    <button class="btn btn-danger">Slet</button></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script src="/webjars/jquery/3.2.1/jquery.js"></script>
+    <script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+    <script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

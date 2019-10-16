@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Opret Bestilling</title>
+    <link rel="stylesheet" type="text/css" th:src="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/></head>
+<body>
+<div th:include="fragment/style :: nav-navbar"></div>
+<div class="container">
+    <h1>Opret Bestilling</h1>
+    <form th:action="@{/order/save/(menuID=${menuModel.id})}" th:method="post" th:object="${orderModel}">
+            <hr>
+            <div class="form-group">
+                <label for="customer-name">Fulde navn</label>
+                <input th:field="${orderModel.customerName}" type="text" class="form-control" id="customer-name"
+                       value="">
+            </div>
+            <div class="form-group">
+                <label for="customer-email">E-mail</label>
+                <input th:field="${orderModel.customerEmail}" type="text" class="form-control" id="customer-email"
+                       value="">
+            </div>
+            <div class="form-group" >
+                <label for="customer-address">Adresse</label>
+                <input th:field="${orderModel.customerAddress}" type="text" class="form-control" id="customer-address"
+                       value="">
+            </div>
+        <div class="form-group">
+            <label for="customer-phone-number">Telefonnummer</label>
+            <input th:field="${orderModel.customerPhoneNumber}" type="text" class="form-control"
+                   id="customer-phone-number" value="">
+        </div>
+            <div class="form-group">
+                <label for="order-date" >Bestillingsdato</label>
+                <input th:field="${orderModel.orderDate}"type="text" class="form-control" id="order-date" value="">
+            </div>
+            <div class="form-group">
+                <label for="delivery-date" >Leveringsdato</label>
+                <input th:field="${orderModel.deliveryDate}" type="text" class="form-control" id="delivery-date"
+                       value="">
+            </div>
+            <div class="form-group">
+                <label for="customer-comment" >Kunde kommentar</label>
+                <input th:field="${orderModel.customerComment}" type="text" class="form-control" id="customer-comment"
+                       value="">
+            </div>
+            <label for="order-info"></label>
+            <div id="order-info" class="row">
+                <div class="form-group">
+                    <label for="chosen-menu">Valgte menu</label>
+                    <input  id="chosen-menu" type="text" th:value="${menuModel.name}" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="guest-count">Antal kuverter</label>
+                    <input type="text" th:value="${guestCount}"  class="form-control" id="guest-count" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="total-price">Total pris</label>
+                    <input type="text" th:value="${priceTotal}" th:id="${priceTotal}" th:name="${priceTotal}"
+                           class="form-control" id="total-price" readonly>
+                </div>
+            </div>
+            <hr>
+        <button type="submit" class="btn btn-success">Bestil</button>
+    </form>
+</div>
+<script src="/webjars/jquery/3.2.1/jquery.js"></script>
+<script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+<script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

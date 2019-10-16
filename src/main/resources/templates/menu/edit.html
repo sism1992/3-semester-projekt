@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Redigér Menu</title>
+    <link rel="stylesheet" type="text/css" th:src="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/></head>
+<body>
+<div th:include="fragment/style :: nav-navbar"></div>
+<div class="container">
+    <h1>Redigér Menu</h1>
+    <hr>
+    <form th:action="@{/menu/edit/save/(id=${menuModel.id})}" th:method="put">
+        <div class="form-group">
+            <label for="name">Navn</label>
+            <input type="text" class="form-control" id="name" value="" th:field="${menuModel.name}">
+        </div>
+        <div class="form-group">
+            <label for="price">Pris</label>
+            <input type="text" class="form-control" id="price" value="" th:field="${menuModel.price}">
+        </div>
+        <div class="form-group">
+            <label for="menu_description">Beskrivelse</label>
+            <textarea class="form-control" rows="5" id="menu_description" name="menu_description" value=""
+                      th:field="${menuModel.description}"></textarea>
+        </div>
+        <div class="form-group">
+            <div th:each="foodItem : ${foodItems}">
+                <input type="checkbox" th:id="${{foodItem.id}}" th:value="${foodItem.id}"
+                       th:field="*{menuModel.foodItems}" />
+                <label th:for="${foodItem}" th:text="${foodItem.name}">Cinema</label>
+            </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-success mb-2">Gem</button>
+    </form>
+</div>
+    <script src="/webjars/jquery/3.2.1/jquery.js"></script>
+    <script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+    <script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

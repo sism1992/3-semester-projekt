@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bekræft slet</title>
+    <link rel="stylesheet" type="text/css" th:src="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/></head>
+<body>
+<div th:include="fragment/style :: nav-navbar"></div>
+<div class="container">
+    <h1>Er du sikker på, at du vil slette?</h1>
+    <hr>
+    <form th:action="@{/order/delete/confirm/(id=${orderModel.id})}" th:method="delete">
+        <div class="form-group">
+            <label>ID:</label>
+            <label th:text="${orderModel.id}"></label>
+        </div>
+        <div class="form-group">
+            <label>Menu:</label>
+            <label th:text="${orderModel.menu.name}"></label>
+        </div>
+        <div class="form-group">
+            <label>Pris:</label>
+            <label th:text="${orderModel.priceTotal}"></label>
+        </div>
+        <div class="form-group">
+            <label>Antal kuverter:</label>
+            <label th:text="${orderModel.guestCount}"></label>
+        </div>
+        <hr>
+        <button type="submit" href="@{../" class="btn btn-danger mb-2">Slet</button>
+    </form>
+</div>
+    <script src="/webjars/jquery/3.2.1/jquery.js"></script>
+    <script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+    <script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

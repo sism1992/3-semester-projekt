@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Se Menu</title>
+    <link rel="stylesheet" type="text/css" th:src="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+          href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/></head>
+<body>
+<div th:include="fragment/style :: nav-navbar"></div>
+<div class="container">
+    <h1>Se Menu</h1>
+    <hr>
+    <form>
+        <div class="form-group">
+            <h3 class="" for="name">Navn</h3>
+            <p id="name" th:text="${menuModel.name}"></p>
+        </div>
+        <div class="form-group">
+            <h3 for="price">Pris</h3>
+            <p id="price" th:text="${menuModel.price}"></p>
+        </div>
+
+        <div class="form-group">
+            <h3 for="menu_description">Beskrivelse</h3>
+            <p id="menu_description" th:text="${menuModel.description}"></p>
+        </div>
+        <div class="form-group">
+            <h3 for="food_items">Med i menu</h3>
+            <div th:each="foodItem : ${menuModel.foodItems}">
+                <p th:text="${foodItem.name}"></p>
+            </div>
+        </div>
+        <hr>
+    </form>
+</div>
+    <script src="/webjars/jquery/3.2.1/jquery.js"></script>
+    <script src="/webjars/popper.js/1.12.9/dist/umd/popper.js"></script>
+    <script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>
